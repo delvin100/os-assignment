@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Operating Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<style>
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    color: #333;
+}
+
+/* Navigation Bar */
+nav {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #00bcd4;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #00bcd4, #0097a7);
+    color: #fff;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Operating Systems Section */
+#os-list {
+    padding: 2rem;
+    background: #fff;
+}
+
+#os-list h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Animation Container (Text Without Animation) */
+.animation-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.animated-text {
+    font-size: 1.5rem;
+    color: #00bcd4;
+    font-weight: bold;
+}
+
+.animated-shapes {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.shape {
+    width: 20px;
+    height: 20px;
+    background: #00bcd4;
+    margin: 0 0.5rem;
+    border-radius: 50%;
+    animation: bounce 2s infinite;
+}
+
+.shape-1 { 
+    animation: bounce 2s infinite, colorChange 3s infinite; 
+    animation-delay: 0s, 0s; 
+    background: #ff5722; /* Initial color */
+}
+.shape-2 { 
+    animation: bounce 2s infinite, colorChange 3s infinite; 
+    animation-delay: 0.5s, 0.5s; 
+    background: #4caf50; /* Initial color */
+}
+.shape-3 { 
+    animation: bounce 2s infinite, colorChange 3s infinite; 
+    animation-delay: 1s, 1s; 
+    background: #2196f3; /* Initial color */
+}
+
+@keyframes colorChange {
+    0% { background-color: #ff5722; } /* Start with orange */
+    33% { background-color: #4caf50; } /* Change to green */
+    66% { background-color: #2196f3; } /* Change to blue */
+    100% { background-color: #ff5722; } /* Return to orange */
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* OS Cards Grid Layout */
+#os-list {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem; /* Space between cards */
+    padding: 2rem;
+    text-align: cen;
+}
+
+.os-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    flex: 1 1 calc(33.333% - 2rem); /* 3 cards per row */
+    max-width: calc(33.333% - 2rem); /* 3 cards per row */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.os-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.os-card img {
+    width: 100%;
+    border-radius: 15px; /* Increased border radius */
+    margin-bottom: 1rem;
+    height: auto;
+    filter: grayscale(50%); /* Grayscale effect by default */
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+.os-card img:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+    filter: grayscale(0%); /* Remove grayscale on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.os-card h3 {
+    font-size: 1.8rem;
+    color: #00bcd4; 
+    margin-bottom: 1rem;
+}
+.os-card p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.details h4 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.details ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.details ul li {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer Section */
+footer {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+footer p {
+    margin-bottom: 1rem;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+}
+
+footer .social-icons a {
+    color: #fff;
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #00bcd4;
+}
+
+/* Additional Styles */
+
+/* Button Styles */
+button {
+    background: #00bcd4;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0097a7;
+}
+
+/* Form Styles */
+form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #00bcd4;
+    outline: none;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+}
+
+table th, table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background: #00bcd4;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    .os-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+</style>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#os-list">Operating Systems</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <header id="home">
+        <h1 style="color: black;">AI-Powered Operating Systems</h1>
+        <p>Explore how AI is transforming modern operating systems with intelligent features and seamless integration.</p>
+    </header>
+    <!-- Operating Systems Section -->
+    <section id="os-list">
+
+<!-- Animation Container -->
+<div class="animation-container">
+    <!-- Animated Text -->
+    <div class="animated-text">
+        <span>Discover the Future of Operating Systems</span>
+        <span>Experience the Power of AI-Enhanced Technology</span>
+        <span>Unlock New Possibilities with Intelligent Systems</span>
+    </div>
+
+    <!-- Animated Shapes -->
+    <div class="animated-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+</div>
+
+<!-- Content Section -->
+<div class="content-section">
+    <p>
+     AI-powered operating systems are redefining how technology integrates with daily life and business operations. By harnessing advanced algorithms, they deliver personalized experiences, automate complex tasks, and offer predictive insights. These systems enhance productivity, streamline workflows, and provide robust security, making them indispensable in driving innovation and maintaining a competitive edge in today's fast-paced digital environment.From intelligent assistants to predictive maintenance, AI-enhanced operating systems are transforming industries and improving lives. <br> Explore the latest developments and innovations in AI-enhanced operating systems and discover how they can benefit your organization.
+    </p>
+
+</div>
+
+        <!-- Windows Copilot -->
+        <div class="os-card">
+            <img src="Images/Windows Copilot.jpg" alt="Windows Copilot">
+            <h3>Windows Copilot</h3>
+            <p>Windows Copilot integrates AI to automate tasks, assist in real-time, and enhance user productivity.</p>
+            <div class="details">
+                <h4>AI Integration</h4>
+                <ul>
+                    <li><strong>NLP</strong>: Powers voice assistants like Cortana and contextual understanding.</li>
+                    <li><strong>ML</strong>: Learns user behavior for personalized recommendations and task automation.</li>
+                    <li><strong>CV</strong>: Features facial recognition (Windows Hello) and object detection.</li>
+                </ul>
+                <h4>Use Cases</h4>
+                <ul>
+                    <li>Productivity: Automates scheduling and email management.</li>
+                    <li>Security: Provides secure login and AI-driven threat detection.</li>
+                    <li>Entertainment: Enhances media experiences with intelligent recommendations.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- macOS with Siri -->
+        <div class="os-card">
+            <img src="Images/macOS Siri.jpg" alt="macOS">
+            <h3>macOS with Siri</h3>
+            <p>macOS offers seamless integration with Siri, providing voice-controlled navigation and personalized assistance.</p>
+            <div class="details">
+                <h4>AI Integration</h4>
+                <ul>
+                    <li><strong>NLP</strong>: Powers Siri for voice commands and text prediction.</li>
+                    <li><strong>ML</strong>: Provides personalized recommendations and image/video analysis in Photos.</li>
+                    <li><strong>CV</strong>: Enables face recognition and AR features in apps like Measure.</li>
+                </ul>
+                <h4>Use Cases</h4>
+                <ul>
+                    <li>Creative Work: Enhances workflows in apps like Final Cut Pro.</li>
+                    <li>Privacy and Security: Protects user data with encryption and AI-driven threat detection.</li>
+                    <li>Smart Home Integration: Controls devices through Siri and HomeKit.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Android with Google Assistant -->
+        <div class="os-card">
+            <img src="Images/Android Google Assistant.jpg" alt="Android">
+            <h3>Android with Google Assistant</h3>
+            <p>Android integrates Google Assistant for voice search, contextual awareness, and intelligent recommendations.</p>
+            <div class="details">
+                <h4>AI Integration</h4>
+                <ul>
+                    <li><strong>NLP</strong>: Powers Google Assistant for voice commands and contextual understanding.</li>
+                    <li><strong>ML</strong>: Learns user preferences for personalized responses and smart recommendations.</li>
+                    <li><strong>CV</strong>: Features image recognition and object detection in apps like Google Photos.</li>
+                </ul>
+                <h4>Use Cases</h4>
+                <ul>
+                    <li>Smart Home: Controls devices through voice commands.</li>
+                    <li>Personalization: Delivers tailored content and reminders.</li>
+                    <li>Accessibility: Enhances accessibility features with voice and image recognition.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Other AI-Enhanced OS Examples -->
+        <div class="os-card">
+            <img src="Images/Ubuntu.png" alt="Linux">
+            <h3>Linux (Ubuntu)</h3>
+            <p>Ubuntu is an open-source OS known for its flexibility, security, and developer-friendly tools.</p>
+            <div class="details">
+                <h4>AI Integration</h4>
+                <ul>
+                    <li><strong>NLP</strong>: Supports open-source voice assistants like Mycroft and NLP tools like NLTK and spaCy.</li>
+                    <li><strong>ML</strong>: Supports frameworks like TensorFlow and PyTorch for building and deploying ML models.</li>
+                    <li><strong>CV</strong>: Uses OpenCV for object detection and image processing.</li>
+                </ul>
+                <h4>Use Cases</h4>
+                <ul>
+                    <li>Development: Ideal for AI research and development.</li>
+                    <li>Server Management: Optimizes resource allocation and security.</li>
+                    <li>Custom Solutions: Used in robotics, IoT, and data analysis.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="os-card">
+            <img src="Images/Fuchsia.jpg" alt="FuchsiaOS">
+            <h3>FuchsiaOS by Google</h3>
+            <p>FuchsiaOS is an open-source capability-based operating system designed for modern computing devices and IoT.</p>
+            <div class="details">
+                <h4>AI Integration</h4>
+                <ul>
+                    <li><strong>NLP</strong>: Facilitates natural language processing for voice interactions and smart assistants.</li>
+                    <li><strong>ML</strong>: Implements machine learning for adaptive user experiences and predictive analytics.</li>
+                    <li><strong>CV</strong>: Supports computer vision for image recognition and augmented reality applications.</li>
+                </ul>
+                <h4>Use Cases</h4>
+                <ul>
+                    <li>IoT Integration: Connects and manages IoT devices efficiently.</li>
+                    <li>Smart Home: Provides a unified platform for smart home device control.</li>
+                    <li>Security: Ensures high-level security and privacy for user data.</li>
+                    <li>Entertainment: Enhances multimedia experiences with AI-driven recommendations and AR/VR support.</li>
+                </ul>
+            </div>
+        </div>
+        <!-- HarmonyOS by Huawei -->
+<div class="os-card">
+    <img src="Images/Harmony.jpg" alt="HarmonyOS">
+    <h3>HarmonyOS by Huawei</h3>
+    <p>HarmonyOS is a distributed operating system designed for seamless cross-device collaboration and a unified ecosystem.</p>
+    <div class="details">
+        <h4>AI Integration</h4>
+        <ul>
+            <li><strong>NLP</strong>: Powers voice assistants for voice commands and contextual understanding.</li>
+            <li><strong>ML</strong>: Learns user behavior for personalized recommendations and system optimization.</li>
+            <li><strong>CV</strong>: Enables facial recognition and object detection.</li>
+        </ul>
+        <h4>Use Cases</h4>
+        <ul>
+            <li>Cross-Device Collaboration: Seamlessly connects multiple devices for shared workflows.</li>
+            <li>Smart Home Integration: Controls smart home devices through a unified interface.</li>
+            <li>Security and Privacy: Provides robust security features and data privacy.</li>
+            <li>Entertainment: Enhances media experiences with intelligent recommendations and AR/VR support.</li>
+        </ul>
+    </div>
+</div>
+    </section>
+<!-- Feedback Form -->
+<section id="feedback" style="padding: 2rem; background: rgba(255, 255, 255, 0.8); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center; color: #333;">Feedback Form</h2>
+    <form action="submit_feedback.php" method="post" style="max-width: 600px; margin: 2rem auto; padding: 2rem; background: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div style="margin-bottom: 1rem;">
+            <label for="name" style="display: block; margin-bottom: 0.5rem; color: #333;">Name:</label>
+            <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="email" style="display: block; margin-bottom: 0.5rem; color: #333;">Email:</label>
+            <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="message" style="display: block; margin-bottom: 0.5rem; color: #333;">Message:</label>
+            <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+        </div>
+        <button type="submit" style="background: #00bcd4; color: #fff; border: none; padding: 0.75rem 1.5rem; border-radius: 5px; cursor: pointer; transition: background 0.3s ease, transform 0.3s ease;">Submit</button>
+        </form>
+        <style>
+        button:hover {
+            background: #0097a7;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            background: #00796b;
+            transform: scale(0.95);
+        }
+
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.5);
+        }
+
+        </style>
+</section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <p style="color: white;">&copy; 2025 AI-Powered Operating Systems
+        <div class="social-icons">
+            <a href="mailto:gmail..delvinvarghese2028@mca.ajce.in" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/delvin-varghese-1811342b8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/delvin100" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
